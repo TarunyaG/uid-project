@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Save Web Form Data to Spreadsheets - Contact Form</title>
+<script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+<script>
+function SubForm (){
+    $.ajax({
+        url:'https://api.apispreadsheets.com/data/pUJgshypbVpWO9sz/',
+        type:'post',
+        data:$("#myForm").serializeArray(),
+        success: function(){
+			location.href="index.html";
+          alert("Form Data Submitted :)")
+        },
+        error: function(){
+          alert("There was an error :(")
+        }
+    });
+}
+</script>
+</head>
+<body bgcolor="#9db4d4">
+
+	<center><img src="dreamscape.jpg"  height=15% width=15%></center>	
+<center> <form id="myForm">
+    <label>Full Name</label>
+    <br/>
+    <input name="full_name" />
+    <br/>
+    <label>Email</label>
+    <br/>
+    <input name="email" />
+    <br/>
+    <label>Age</label>
+    <br/>
+	
+    <input type="radio" id="age" name="age" value="0-18" />below 18<br/>
+    <input type="radio" id="age" name="age" value="18-60" />18-60<br/>
+	<input type="radio" id="age" name="age" value="60+" />above 60<br/>
+    <br/>
+    <label>Desired Destination</label>
+    <br/>
+    <textarea name="message">
+    </textarea>
+    <br/>
+    <br/>
+  </form>
+  <button onclick="SubForm()">Submit</button> </center>
+</body>
+</html>

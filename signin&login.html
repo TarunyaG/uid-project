@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Sign Up and Login Page</title>
+    <style>
+        /* Basic styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+           
+            background-color:#8eb0e8
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            max-width: 300px;
+            margin: 0 auto;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        input[type="submit"] {
+            width: 110%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+  
+<center><img src="dreamscape.jpg"  height=10% width=10%></center>
+    <h1>Sign Up</h1>
+    <form id="signupForm">
+        <input type="text" id="signupUsername" placeholder="Username" required>
+        <input type="password" id="signupPassword" placeholder="Password" required>
+        <input type="submit" value="Sign Up">
+    </form>
+
+    <h1>Login</h1>
+    <form id="loginForm">
+        <input type="text" id="loginUsername" placeholder="Username" required>
+        <input type="password" id="loginPassword" placeholder="Password" required>
+        <input type="submit" value="Login">
+    </form>
+
+    <script>
+        // User data object to store registered users
+        const users = {};
+
+        // Function to handle sign-up form submission
+        function signUp() {
+            event.preventDefault(); // Prevent form submission
+
+            const username = document.getElementById("signupUsername").value;
+            const password = document.getElementById("signupPassword").value;
+
+            if (username && password) {
+                // Store user data
+                users[username] = password;
+                alert("Sign up successful! You can now log in.");
+            } else {
+                alert("Please enter both username and password.");
+            }
+        }
+
+        // Function to handle login form submission
+        function login() {
+            event.preventDefault(); // Prevent form submission
+
+            const username = document.getElementById("loginUsername").value;
+            const password = document.getElementById("loginPassword").value;
+
+            if (users[username] === password) {
+                location.href="form1.html";
+                alert("Login successful!");
+                // Redirect to the home page or perform any other actions
+            } else {
+                alert("Invalid username or password.");
+            }
+        }
+
+        // Attach event listeners to the forms
+        document.getElementById("signupForm").addEventListener("submit", signUp);
+        document.getElementById("loginForm").addEventListener("submit", login);
+    </script>
+</body>
+
+</html>
